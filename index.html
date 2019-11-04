@@ -62,6 +62,43 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-STM32cube配置-蓝牙-0" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/10/30/STM32cube配置-蓝牙-0/" class="article-date">
+  <time datetime="2019-10-30T04:33:47.000Z" itemprop="datePublished">2019-10-30</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/10/30/STM32cube配置-蓝牙-0/">STM32cube配置--蓝牙</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>STM32Cube介绍<br>STM32CubeMX，是一个图形化的软件配置工具。<br>配置<br>1.下载安装包<br>点击Help选择里面的Manage embedded software packages，之后在STM32Cube MCU Packages中选择芯片型号的固件包(注意：选择最新版本的)进行下载，然后再点击STMicroelectronics,在X-CUBE-BLE1中下载蓝牙固件包，下载完成后可以看见前面的小方块变成了绿色。<br><img src="//CCIT18081430535.github.io/2019/10/30/STM32cube配置-蓝牙-0/1.jpg" alt="图"><br><img src="//CCIT18081430535.github.io/2019/10/30/STM32cube配置-蓝牙-0/2.jpg" alt="图"><br><img src="//CCIT18081430535.github.io/2019/10/30/STM32cube配置-蓝牙-0/3.jpg" alt="图"><br>2.新建一个项目<br>选取芯片的型号，在此我们选取型号为STM32F401RETx的芯片,双击右侧表格中你所用到的芯片型号<br><img src="//CCIT18081430535.github.io/2019/10/30/STM32cube配置-蓝牙-0/4.jpg" alt="图"><br>3.对芯片进行配置<br>点击Additional Software进入蓝牙配置界面，点开STMicroelectronics X-CUBE-BLE1下拉页面出现Wireless_Application和Wireless_BlueNRG-MS,将Wireless_Application中的Application配置成Beacon，Wireless_BlueNRG-MS中的HCL_TL配置成Basic,HCL_TL_LNTERFACE配置成UserBoard，然后要在Controller和Utils后面的小方块中打勾，之后点击下面的OK。<br><img src="//CCIT18081430535.github.io/2019/10/30/STM32cube配置-蓝牙-0/5.jpg" alt="图"><br><img src="//CCIT18081430535.github.io/2019/10/30/STM32cube配置-蓝牙-0/6.jpg" alt="图"><br>回到芯片所在页,点击Additional Software出现STMicroelectronics X-CUBE-BLE1，双击进入进行引脚的配置，勾选好Wireless_BlueNRG-MS和Wireless_Application，下方是IO口的选择但现在却无法进行配置，所以我们需要在Connectivity中进行串行接口的配置。<br><img src="//CCIT18081430535.github.io/2019/10/30/STM32cube配置-蓝牙-0/7.jpg" alt="图"><br><img src="//CCIT18081430535.github.io/2019/10/30/STM32cube配置-蓝牙-0/8.jpg" alt="图"><br>单击Connectivity，对SPI和USART进行配置，SPI1中Mode选择Full-Duplex Master模式,USART1中Mode选择Asynchronous模式，点击System Core,将SYS中Debug设置为Serial Wire，对此就设置好了时钟数据线(SWCLK、SWDIO),然后就能看到右侧芯片上的几个引脚变绿。然后回到蓝牙引脚配置页面，把BUS IO driver中Found  Solutions选SPI1，最下方的BSP中BSP USART的Found Solutions选USART1;在此，其他的还是无法配置，我们需要根据原理图对右图中芯片引脚进行手动配置；将PC4配置成GPIO_EXTI4(外部中断)，PA4和PB1分别设置为输出引脚。<br><img src="//CCIT18081430535.github.io/2019/10/30/STM32cube配置-蓝牙-0/9.jpg" alt="图"><br><img src="//CCIT18081430535.github.io/2019/10/30/STM32cube配置-蓝牙-0/10.jpg" alt="图"><br><img src="//CCIT18081430535.github.io/2019/10/30/STM32cube配置-蓝牙-0/11.jpg" alt="图"><br><img src="//CCIT18081430535.github.io/2019/10/30/STM32cube配置-蓝牙-0/12.jpg" alt="图"><br><img src="//CCIT18081430535.github.io/2019/10/30/STM32cube配置-蓝牙-0/13.jpg" alt="图"><br><img src="//CCIT18081430535.github.io/2019/10/30/STM32cube配置-蓝牙-0/14.jpg" alt="图"><br><img src="//CCIT18081430535.github.io/2019/10/30/STM32cube配置-蓝牙-0/15.jpg" alt="图"><br>然后回到蓝牙引脚配置页面，将EXTI Line中Found Solutions选择PC4,CS Line选PA4,Rese Line选PB1<br><img src="//CCIT18081430535.github.io/2019/10/30/STM32cube配置-蓝牙-0/16.jpg" alt="图"><br>之后对NVIC(内嵌向量中断控制器)进行设置，点击System Core中的NVIC,并在EXTI line4 interrupt后的小方块中打勾。<br><img src="//CCIT18081430535.github.io/2019/10/30/STM32cube配置-蓝牙-0/17.jpg" alt="图"><br>最后对工程进行保存，点击Project Manager，然后生成代码,点击GENERATE CODE。<br><img src="//CCIT18081430535.github.io/2019/10/30/STM32cube配置-蓝牙-0/18.jpg" alt="图"><br><img src="//CCIT18081430535.github.io/2019/10/30/STM32cube配置-蓝牙-0/19.jpg" alt="图"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://CCIT18081430535.github.io/2019/10/30/STM32cube配置-蓝牙-0/" data-id="ck2k9hhvs0004h0wowegx2b1s" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-再来一次" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/10/30/再来一次/" class="article-date">
@@ -89,7 +126,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://CCIT18081430535.github.io/2019/10/30/再来一次/" data-id="ck2cs3ew60004hswotvuj496r" class="article-share-link">Share</a>
+      <a data-url="http://CCIT18081430535.github.io/2019/10/30/再来一次/" data-id="ck2k9hhvy0008h0wom9e4oz3f" class="article-share-link">Share</a>
       
       
     </footer>
@@ -126,7 +163,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://CCIT18081430535.github.io/2019/10/30/yes/" data-id="ck2cs3ewa0006hswo2660dw8f" class="article-share-link">Share</a>
+      <a data-url="http://CCIT18081430535.github.io/2019/10/30/yes/" data-id="ck2k9hhvt0006h0wo1r7tmenv" class="article-share-link">Share</a>
       
       
     </footer>
@@ -163,7 +200,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://CCIT18081430535.github.io/2019/10/30/stm32/" data-id="ck2cs3ew50003hswoiz714idq" class="article-share-link">Share</a>
+      <a data-url="http://CCIT18081430535.github.io/2019/10/30/stm32/" data-id="ck2k9hhvu0007h0wox7wyb1g1" class="article-share-link">Share</a>
       
       
     </footer>
@@ -200,7 +237,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://CCIT18081430535.github.io/2019/10/29/STM32CUBE配置-蓝牙/" data-id="ck2cs3ew40002hswov72u8etd" class="article-share-link">Share</a>
+      <a data-url="http://CCIT18081430535.github.io/2019/10/29/STM32CUBE配置-蓝牙/" data-id="ck2k9hhvt0005h0wojkucznll" class="article-share-link">Share</a>
       
       
     </footer>
@@ -237,7 +274,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://CCIT18081430535.github.io/2019/10/24/My-Tree-post/" data-id="ck2cs3ew00001hswoc324e3ga" class="article-share-link">Share</a>
+      <a data-url="http://CCIT18081430535.github.io/2019/10/24/My-Tree-post/" data-id="ck2k9hhtq0002h0wovd7xi0mf" class="article-share-link">Share</a>
       
       
     </footer>
@@ -274,7 +311,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://CCIT18081430535.github.io/2019/10/24/My-two-post/" data-id="ck2cs3evv0000hswowvnzzlgx" class="article-share-link">Share</a>
+      <a data-url="http://CCIT18081430535.github.io/2019/10/24/My-two-post/" data-id="ck2k9hhtj0000h0wonefrd6za" class="article-share-link">Share</a>
       
       
     </footer>
@@ -311,7 +348,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://CCIT18081430535.github.io/2019/09/17/hello-ccit/" data-id="ck2cs3ewb0007hswosifa9n1m" class="article-share-link">Share</a>
+      <a data-url="http://CCIT18081430535.github.io/2019/09/17/hello-ccit/" data-id="ck2k9hhvp0003h0woxqayt9lr" class="article-share-link">Share</a>
       
       
     </footer>
@@ -348,7 +385,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://CCIT18081430535.github.io/2019/09/17/My-New-Post/" data-id="ck2cs3ew90005hswo6zwg6rb7" class="article-share-link">Share</a>
+      <a data-url="http://CCIT18081430535.github.io/2019/09/17/My-New-Post/" data-id="ck2k9hhto0001h0woczn672be" class="article-share-link">Share</a>
       
       
     </footer>
@@ -397,7 +434,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://CCIT18081430535.github.io/2019/09/17/hello-world/" data-id="ck2cs3ewy0008hswohqzw9rpn" class="article-share-link">Share</a>
+      <a data-url="http://CCIT18081430535.github.io/2019/09/17/hello-world/" data-id="ck2k9hhwe0009h0woqn55aiix" class="article-share-link">Share</a>
       
       
     </footer>
@@ -438,6 +475,10 @@
       <ul>
         
           <li>
+            <a href="/2019/10/30/STM32cube配置-蓝牙-0/">STM32cube配置--蓝牙</a>
+          </li>
+        
+          <li>
             <a href="/2019/10/30/再来一次/">再来一次</a>
           </li>
         
@@ -451,10 +492,6 @@
         
           <li>
             <a href="/2019/10/29/STM32CUBE配置-蓝牙/">STM32CUBE配置-蓝牙</a>
-          </li>
-        
-          <li>
-            <a href="/2019/10/24/My-Tree-post/">My-Tree-post</a>
           </li>
         
       </ul>
