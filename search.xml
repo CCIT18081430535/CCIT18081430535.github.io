@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title>搭建Hexo博客</title>
+    <url>/2019/11/07/%E6%90%AD%E5%BB%BAHexo%E5%8D%9A%E5%AE%A2/</url>
+    <content><![CDATA[<pre><code>第一步 搭建Hexo本地静态网页</code></pre><p>一、Hexo 的环境配置——安装 Node.js</p>
+<ol>
+<li><p>登录网址为 <a href="https://nodejs.org/en/download/；找到" target="_blank" rel="noopener">https://nodejs.org/en/download/；找到</a> Download 板块。</p>
+</li>
+<li><p>根据本机类型，选择相应的版本下载；<br>注：如何确定自己电脑的类型呢？解决办法：计算机-&gt;右键-&gt;属性，看到下图可知本机是 32 位架构。<br><img src="//CCIT18081430535.github.io/2019/11/07/搭建Hexo博客/1.jpg" alt="图"><br>因此选择:<br><img src="//CCIT18081430535.github.io/2019/11/07/搭建Hexo博客/2.jpg" alt="图"></p>
+</li>
+<li><p>安装下载的 node-v10.16.3-x86 文件，一路 next，即可完成安装。<br>注：nodejs 默认的安装中会包含环境变量的配置和 npm 工具的安装。<br><img src="//CCIT18081430535.github.io/2019/11/07/搭建Hexo博客/3.jpg" alt="图"></p>
+</li>
+<li><p>检验是否安装成功：在“开始”菜单中输入 cmd，打开命令行窗口<br>（1） 输入 node –v，若显示版本号，则 nodejs 安装成功；<br>（2） 输入 npm -v，若显示版本号，则 npm 安装成功；<br>   <img src="//CCIT18081430535.github.io/2019/11/07/搭建Hexo博客/4.jpg" alt="图"></p>
+</li>
+<li><p>至此，Hexo 的环境配置已经全部完成。<br>二、Hexo 的安装</p>
+</li>
+<li><p>使用 npm 命令安装 Hexo 客户端，输入：npm install -g hexo-cli<br><img src="//CCIT18081430535.github.io/2019/11/07/搭建Hexo博客/5.jpg" alt="图"></p>
+</li>
+<li><p>确定自己博客（撰写/更新）的文件夹在本机位置：例如，可以在 D 盘新建一个 blog的文件夹，然后将命令行切换到这个目录下<br><img src="//CCIT18081430535.github.io/2019/11/07/搭建Hexo博客/6.jpg" alt="图"></p>
+</li>
+<li><p>将该文件夹初始化为 hexo 网页框架所在位置，输入 hexo init:<br><img src="//CCIT18081430535.github.io/2019/11/07/搭建Hexo博客/7.jpg" alt="图"><br>不难发现，命令执行失败，因为它需要从 github 上下载程序，因此我们首先需要下载 Git 工具。</p>
+</li>
+<li><p>登录 git 的 windows 版本下载页面：<a href="https://git-scm.com/download/win。根据自己系统类型，选择性安装。我这里是安装" target="_blank" rel="noopener">https://git-scm.com/download/win。根据自己系统类型，选择性安装。我这里是安装</a> Git-2.23.0-32-bit 文件。<br><img src="//CCIT18081430535.github.io/2019/11/07/搭建Hexo博客/8.jpg" alt="图"><br>在安装过程中有如下两个页面要注意选择，其他一路 Next.<br><img src="//CCIT18081430535.github.io/2019/11/07/搭建Hexo博客/9.jpg" alt="图"><br><img src="//CCIT18081430535.github.io/2019/11/07/搭建Hexo博客/10.jpg" alt="图"></p>
+</li>
+<li><p>检测 git 工具是否安装成功：在新打开的 cmd 窗口输入 git 指令，如果出现下图，表明 git 安装成功。<br><img src="//CCIT18081430535.github.io/2019/11/07/搭建Hexo博客/11.jpg" alt="图"></p>
+</li>
+<li><p>切换到博客文件夹路径下面后，重新输入 hexo init，若出现下图，表明 blog 初始化成功。<br><img src="//CCIT18081430535.github.io/2019/11/07/搭建Hexo博客/12.jpg" alt="图"></p>
+</li>
+<li><p>生成 public 静态资源:输入 hexo g 注：g=generate<br><img src="//CCIT18081430535.github.io/2019/11/07/搭建Hexo博客/13.jpg" alt="图"><br>可以看到生成了很多.html 网页文件、png 和 git 图片文件等等。</p>
+</li>
+<li><p>启动本地服务器:输入 hexo s 注：s=server<br><img src="//CCIT18081430535.github.io/2019/11/07/搭建Hexo博客/14.jpg" alt="图"><br>图中语句表示 Hexo 运行在上述网址上。</p>
+</li>
+<li><p>检查网站雏形：在浏览器输入 <a href="http://localhost:4000" target="_blank" rel="noopener">http://localhost:4000</a> ，即可查看通过 hexo 部署的本地静态网页效果。很多人会碰到浏览器一直在转圈但是就是加载不出来的问题，一般情况下是因为端口占用的缘故，因为 4000 这个端口太常见了此时我们 ctrl+c 停止服务器，接着输入“hexo server -p 端口号”来改变端口号。如果搭建成功，应该可在上述网址上看到如下页面：<br><img src="//CCIT18081430535.github.io/2019/11/07/搭建Hexo博客/15.jpg" alt="图"><br>三、开写第一篇博客文章</p>
+</li>
+<li><p>上述网站中出现的 Hello World 文章其实在 blog\source_posts 文件目录下默认创建的，因此我们可以直接在该文件目录下创建自己的博客内容。</p>
+</li>
+<li><p>新建第一篇博客文件。在 blog 文件下使用命令：hexo new 文件名。这样 hexo 就<br>会帮我们在 blog\source_posts 下自动生成制定名称的文件,后缀名为.md。用这个命令的好处是帮我们自动生成了时间。<br><img src="//CCIT18081430535.github.io/2019/11/07/搭建Hexo博客/16.jpg" alt="图"></p>
+</li>
+<li><p>打开、撰写、保存新文件： 可以使用 txt 操作，打开文件后输入以下内容：<br>hello 你好啊，并以 UTF-8 格式来保存。<br><img src="//CCIT18081430535.github.io/2019/11/07/搭建Hexo博客/17.jpg" alt="图"><br>注意：有的文件后缀默认会省略掉，需要设置电脑的相关选项。<br>![图](STM32cube配置-蓝牙-0/18.jpg）<br>刷新下网页即可看到如下页面<br>![图](STM32cube配置-蓝牙-0/19.jpg）</p>
+</li>
+<li><p>页面优化：如果我希望自己的页面上有 Hello World 这篇博文的效果，则可以采用<br>markdown 格式语法。例如，在上文中添加如下内容：<br>![图](STM32cube配置-蓝牙-0/20.jpg）<br>生成页面如下如所示：<br>![图](STM32cube配置-蓝牙-0/21.jpg）</p>
+<pre><code>第二步 搭建 Github 网页仓库</code></pre></li>
+<li><p>创建一个新的仓库：登录官网后，点击 标签后输入用户名、密码。然后创建一个新的仓库。注意，下图两个红色覆盖区域的名称要相同。最后点击“create repository”<br>![图](STM32cube配置-蓝牙-0/22.jpg）</p>
+</li>
+<li><p>完成后，可以点击该仓库，进入仓库的配置界面<br>![图](STM32cube配置-蓝牙-0/23.jpg）<br>鼠标拖动纵向进度条到中央位置，发现如下消息：<br>![图](STM32cube配置-蓝牙-0/24.jpg）<br>这时表明，我们新建的仓库被发布在了上述这个网页上。</p>
+</li>
+<li><p>登录上述网址，发现内容和该仓库中的 README.md 文件中的内容一模一样。</p>
+<pre><code>第三步 关联 Github 网页仓库和本地 Hexo 博客</code></pre><p>一、配置 SSH key（这个操作似乎只能在 git bash 中完成）为什么要配置这个呢？因为你提交代码肯定要拥有你的 github 权限才可以，但是直接使用用户名和密码太不安全了，所以我们使用 ssh key 来解决本地和服务器的连接问题。</p>
+</li>
+<li><p>创建 ssh key: 第一条指令是查看本机中是否存在 ssh key；如果存在就可以直接使用；若不存在，则需要先生成。第二条指令就是用来生成 ssh key,输入：输入 ssh-keygen -t rsa -C “github 邮箱名称”<br>![图](STM32cube配置-蓝牙-0/25.jpg）<br>然后连续 3 次回车，最终会生成一个文件在用户目录下，打开用户目录，找<br>到.ssh\id_rsa.pub 文件，记事本打开并复制里面的内容，打开你的 github 主页，进入个人设置 -&gt; SSH and GPG keys -&gt; New SSH key,将复制的内容粘贴至其中。</p>
+</li>
+<li><p>测试本机是否可以通过 ssh 连接到自己的 github 仓库。输入：<br>ssh -T <a href="mailto:git@github.com" target="_blank" rel="noopener">git@github.com</a>       # 注意邮箱地址不用改<br>然后输入 yes<br>![图](STM32cube配置-蓝牙-0/26.jpg）<br>看到这个信息说明 SSH 已配置成功！</p>
+</li>
+<li><p>修改 blog_config.yml 文件，将最后一部分修改为如下内容<br>deploy:<br>type: git<br>repo: <a href="mailto:git@github.com" target="_blank" rel="noopener">git@github.com</a>:用户名/用户名.github.io.git<br>branch: master<br>注：repo 后面的内容拷贝自下图；注意修改内容的空格和缩进；<br>![图](STM32cube配置-蓝牙-0/27.jpg）</p>
+</li>
+<li><p>安装一个用于关联 hexo 和 git 的小插件： npm install hexo-deployer-git –save<br>![图](STM32cube配置-蓝牙-0/28.jpg）</p>
+</li>
+<li><p>将 hexo 部署至自己的 github 仓库上：输入 hexo d 指令 注：d-deoly。<br>![图](STM32cube配置-蓝牙-0/29.jpg）</p>
+</li>
+<li><p>根据错误提示消息，输入两条 git 的配置指令：<br>![图](STM32cube配置-蓝牙-0/30.jpg）<br>![图](STM32cube配置-蓝牙-0/31.jpg）</p>
+</li>
+<li><p>在浏览器中输入我们的仓库地址，发现网页更新为本地的静态网页，同时仓库中多了很多文件。但这时候发现只有我们的第一篇默认的 hello world 博文！因为我们新建的那篇 helloccit 文件没有使用命令生成静态资源！</p>
+</li>
+<li><p>最后输入(1) hexo g(2) hexo d第一条指令的作用是更新 public 下的 index 文件。第二条指令是再次部署。<br>![图](STM32cube配置-蓝牙-0/32.jpg）</p>
+</li>
+<li><p>在浏览器中输入自己的 github 仓库网址（见第二部的第 2 小步中的图片）： https://用户名.github.io</p>
+</li>
+</ol>
+]]></content>
+  </entry>
+  <entry>
+    <title>STM32cube配置--蓝牙</title>
+    <url>/2019/10/30/STM32cube%E9%85%8D%E7%BD%AE-%E8%93%9D%E7%89%99-0/</url>
+    <content><![CDATA[<p>STM32Cube介绍<br>STM32CubeMX，是一个图形化的软件配置工具。<br>配置<br>1.下载安装包<br>点击Help选择里面的Manage embedded software packages，之后在STM32Cube MCU Packages中选择芯片型号的固件包(注意：选择最新版本的)进行下载，然后再点击STMicroelectronics,在X-CUBE-BLE1中下载蓝牙固件包，下载完成后可以看见前面的小方块变成了绿色。<br><img src="//CCIT18081430535.github.io/2019/10/30/STM32cube配置-蓝牙-0/1.jpg" alt="图"><br><img src="//CCIT18081430535.github.io/2019/10/30/STM32cube配置-蓝牙-0/2.jpg" alt="图"><br><img src="//CCIT18081430535.github.io/2019/10/30/STM32cube配置-蓝牙-0/3.jpg" alt="图"><br>2.新建一个项目<br>选取芯片的型号，在此我们选取型号为STM32F401RETx的芯片,双击右侧表格中你所用到的芯片型号<br><img src="//CCIT18081430535.github.io/2019/10/30/STM32cube配置-蓝牙-0/4.jpg" alt="图"><br>3.对芯片进行配置<br>点击Additional Software进入蓝牙配置界面，点开STMicroelectronics X-CUBE-BLE1下拉页面出现Wireless_Application和Wireless_BlueNRG-MS,将Wireless_Application中的Application配置成Beacon，Wireless_BlueNRG-MS中的HCL_TL配置成Basic,HCL_TL_LNTERFACE配置成UserBoard，然后要在Controller和Utils后面的小方块中打勾，之后点击下面的OK。<br><img src="//CCIT18081430535.github.io/2019/10/30/STM32cube配置-蓝牙-0/5.jpg" alt="图"><br><img src="//CCIT18081430535.github.io/2019/10/30/STM32cube配置-蓝牙-0/6.jpg" alt="图"><br>回到芯片所在页,点击Additional Software出现STMicroelectronics X-CUBE-BLE1，双击进入进行引脚的配置，勾选好Wireless_BlueNRG-MS和Wireless_Application，下方是IO口的选择但现在却无法进行配置，所以我们需要在Connectivity中进行串行接口的配置。<br><img src="//CCIT18081430535.github.io/2019/10/30/STM32cube配置-蓝牙-0/7.jpg" alt="图"><br><img src="//CCIT18081430535.github.io/2019/10/30/STM32cube配置-蓝牙-0/8.jpg" alt="图"><br>单击Connectivity，对SPI和USART进行配置，SPI1中Mode选择Full-Duplex Master模式,USART1中Mode选择Asynchronous模式，点击System Core,将SYS中Debug设置为Serial Wire，对此就设置好了时钟数据线(SWCLK、SWDIO),然后就能看到右侧芯片上的几个引脚变绿。然后回到蓝牙引脚配置页面，把BUS IO driver中Found  Solutions选SPI1，最下方的BSP中BSP USART的Found Solutions选USART1;在此，其他的还是无法配置，我们需要根据原理图对右图中芯片引脚进行手动配置；将PC4配置成GPIO_EXTI4(外部中断)，PA4和PB1分别设置为输出引脚。<br><img src="//CCIT18081430535.github.io/2019/10/30/STM32cube配置-蓝牙-0/9.jpg" alt="图"><br><img src="//CCIT18081430535.github.io/2019/10/30/STM32cube配置-蓝牙-0/10.jpg" alt="图"><br><img src="//CCIT18081430535.github.io/2019/10/30/STM32cube配置-蓝牙-0/11.jpg" alt="图"><br><img src="//CCIT18081430535.github.io/2019/10/30/STM32cube配置-蓝牙-0/12.jpg" alt="图"><br><img src="//CCIT18081430535.github.io/2019/10/30/STM32cube配置-蓝牙-0/13.jpg" alt="图"><br><img src="//CCIT18081430535.github.io/2019/10/30/STM32cube配置-蓝牙-0/14.jpg" alt="图"><br><img src="//CCIT18081430535.github.io/2019/10/30/STM32cube配置-蓝牙-0/15.jpg" alt="图"><br>然后回到蓝牙引脚配置页面，将EXTI Line中Found Solutions选择PC4,CS Line选PA4,Rese Line选PB1<br><img src="//CCIT18081430535.github.io/2019/10/30/STM32cube配置-蓝牙-0/16.jpg" alt="图"><br>之后对NVIC(内嵌向量中断控制器)进行设置，点击System Core中的NVIC,并在EXTI line4 interrupt后的小方块中打勾。<br><img src="//CCIT18081430535.github.io/2019/10/30/STM32cube配置-蓝牙-0/17.jpg" alt="图"><br>最后对工程进行保存，点击Project Manager，然后生成代码,点击GENERATE CODE。<br><img src="//CCIT18081430535.github.io/2019/10/30/STM32cube配置-蓝牙-0/18.jpg" alt="图"><br><img src="//CCIT18081430535.github.io/2019/10/30/STM32cube配置-蓝牙-0/19.jpg" alt="图"></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>再来一次</title>
+    <url>/2019/10/30/%E5%86%8D%E6%9D%A5%E4%B8%80%E6%AC%A1/</url>
+    <content><![CDATA[<p>再来一次<img src="//CCIT18081430535.github.io/2019/10/30/再来一次/1.jpg" alt="图"><br><img src="//CCIT18081430535.github.io/2019/10/30/再来一次/2.jpg" alt="图"></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>yes</title>
+    <url>/2019/10/30/yes/</url>
+    <content><![CDATA[<p>小哥哥好好看哦哈哈哈哈哈<img src="//CCIT18081430535.github.io/2019/10/30/yes/1.jpg" alt="图"><br>前方高能！！！请心脏承受能力低的迅速撤离<img src="//CCIT18081430535.github.io/2019/10/30/yes/2.jpg" alt="图"></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>stm32</title>
+    <url>/2019/10/30/stm32/</url>
+    <content><![CDATA[<p> 发发发hello<img src="//CCIT18081430535.github.io/2019/10/30/stm32/1.jpg" alt="图"></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>STM32CUBE配置-蓝牙</title>
+    <url>/2019/10/29/STM32CUBE%E9%85%8D%E7%BD%AE-%E8%93%9D%E7%89%99/</url>
+    <content><![CDATA[<p>STM32<br>蓝牙配置<img src="//CCIT18081430535.github.io/2019/10/29/STM32CUBE配置-蓝牙/20190320153909_oskvr.jpg" alt="tupian"></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>My-Tree-post</title>
+    <url>/2019/10/24/My-Tree-post/</url>
+    <content><![CDATA[<p>STM32cube配置——蓝牙</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>My-two-post</title>
+    <url>/2019/10/24/My-two-post/</url>
+    <content><![CDATA[<p>南康</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>hello ccit</title>
+    <url>/2019/09/17/hello-ccit/</url>
+    <content><![CDATA[<p>12345(hello-ccit)[]</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>My New Post</title>
+    <url>/2019/09/17/My-New-Post/</url>
+    <content><![CDATA[<p>hello ccit<br>hello ccit(<a href="http://www.ccit.js.cn" target="_blank" rel="noopener">http://www.ccit.js.cn</a>)</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>Hello World</title>
+    <url>/2019/09/17/hello-world/</url>
+    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+]]></content>
+  </entry>
+</search>
